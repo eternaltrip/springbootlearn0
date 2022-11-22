@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/test?serverTimezone=UTC
+      username: root
+      password: 123456
+      max-wait: 60000
+      max-active: 20
+      min-idle: 5
+      initial-size: 8
+      keep-alive: true
+      max-evictable-idle-time-millis: 40000
+      min-evictable-idle-time-millis: 30000
+      time-between-eviction-runs-millis: 60000
+      validationQuery: SELECT 1 FROM DUAL
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+
+
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      #table-prefix:  #表名共有的开头
+      id-type: auto #默认,雪花算法
+
+

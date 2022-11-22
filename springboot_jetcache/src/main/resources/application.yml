@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+    group:
+      "dev": devDB,devLog,devCache
+      "pro": proDB,proMP
+  main:
+    # 循环依赖打开,默认关闭的
+    allow-circular-references: true
+server:
+  #--server.port=8082 ??????????????
+  port: 8088

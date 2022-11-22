@@ -1,0 +1,9 @@
+spring:
+  profiles:
+    active: dev
+    group:
+      "dev": devDB,devLog,devRedis
+      "pro": proDB,proMP
+server:
+  #--server.port=8082 ??????????????
+  port: 8088

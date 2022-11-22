@@ -1,0 +1,17 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    type: redis
+    redis:
+      # 缓存时间
+      time-to-live: 10s
+      #是否混村null对象
+      cache-null-values: true
+      # 缓存key的公共开头
+      key-prefix: yj
+      #是否使用上面这个公共开头
+      use-key-prefix: true
+
+      enable-statistics: true

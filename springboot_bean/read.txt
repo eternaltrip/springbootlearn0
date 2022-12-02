@@ -139,4 +139,53 @@ public class Dbconfig {
         }
     }
 
-6.
+6.  implements ImportSelector 可以根据调用者的属性来自定义某些东西
+
+
+public class MyImportSelector implements ImportSelector {
+
+
+    @Override
+    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+
+        boolean flag = importingClassMetadata.hasAnnotation("org.springframework.context.annotation.Import");
+        if(flag){
+            return new String[]{"com.yj.springboot_bean.bean.Cat"};
+        }
+
+        return new String[]{"com.yj.springboot_bean.bean.Dog"};
+    }
+
+}
+
+
+7.implements ImportBeanDefinitionRegistrar,通过BeanDefinitionRegistry注册器来注册bean.
+
+    public class MyRegistrar implements ImportBeanDefinitionRegistrar {
+
+        @Override
+        public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+
+            BeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(Dog.class).getBeanDefinition();
+            registry.registerBeanDefinition("big yellow" , beanDefinition);
+        }
+    }
+
+
+8. implements BeanDefinitionRegistryPostProcessor,使用后置bean注册器,之前同名的bean的注册在这里都会被覆盖
+
+
+public class MyPostProcessor implements BeanDefinitionRegistryPostProcessor {
+    @Override
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
+        BeanDefinition beanDefinition = BeanDefinitionBuilder
+                .rootBeanDefinition(BookServiceImpl4.class)
+                .getBeanDefinition();
+        beanDefinitionRegistry.registerBeanDefinition("bookService" , beanDefinition);
+    }
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
+
+    }
+}

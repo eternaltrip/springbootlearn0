@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Mybatis01/Mybatis01.iml" filepath="$PROJECT_DIR$/Mybatis01/Mybatis01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/base01/base01.iml" filepath="$PROJECT_DIR$/base01/base01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo01/demo01.iml" filepath="$PROJECT_DIR$/demo01/demo01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo_SSMP/demo_SSMP.iml" filepath="$PROJECT_DIR$/demo_SSMP/demo_SSMP.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ip_spring_boot_starter/ip_spring_boot_starter.iml" filepath="$PROJECT_DIR$/ip_spring_boot_starter/ip_spring_boot_starter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mybatisplus01/mybatisplus01.iml" filepath="$PROJECT_DIR$/mybatisplus01/mybatisplus01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_admin_client/springboot_admin_client.iml" filepath="$PROJECT_DIR$/springboot_admin_client/springboot_admin_client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_admin_server/springboot_admin_server.iml" filepath="$PROJECT_DIR$/springboot_admin_server/springboot_admin_server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_bean/springboot_bean.iml" filepath="$PROJECT_DIR$/springboot_bean/springboot_bean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_cache/springboot_cache.iml" filepath="$PROJECT_DIR$/springboot_cache/springboot_cache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_configuration/springboot_configuration.iml" filepath="$PROJECT_DIR$/springboot_configuration/springboot_configuration.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_jetcache/springboot_jetcache.iml" filepath="$PROJECT_DIR$/springboot_jetcache/springboot_jetcache.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_mail/springboot_mail.iml" filepath="$PROJECT_DIR$/springboot_mail/springboot_mail.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_mongo/springboot_mongo.iml" filepath="$PROJECT_DIR$/springboot_mongo/springboot_mongo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_mq/springboot_mq.iml" filepath="$PROJECT_DIR$/springboot_mq/springboot_mq.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_redis/springboot_redis.iml" filepath="$PROJECT_DIR$/springboot_redis/springboot_redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo02/springboot_startup.iml" filepath="$PROJECT_DIR$/demo02/springboot_startup.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/springbootlearn0.iml" filepath="$PROJECT_DIR$/.idea/springbootlearn0.iml" />
+    </modules>
+  </component>
+</project>

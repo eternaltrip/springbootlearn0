@@ -1,0 +1,12 @@
+logging:
+  level:
+    root: info
+  pattern:
+  #    console: "%d %clr(%5p) --- [%16t] %clr(%-40.40c){cyan} : %m %n"
+  file:
+    name: cacheserver.log
+  logback:
+    rollingpolicy:
+      max-file-size: 50KB
+      file-name-pattern: cacheserver.%d{yyyy-MM-dd}.%i.log
+

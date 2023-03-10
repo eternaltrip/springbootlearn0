@@ -1,0 +1,8 @@
+mybatis-plus:
+  global-config:
+    db-config:
+      #table-prefix:  #表名共有的开头
+      id-type: auto #默认,雪花算法
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+

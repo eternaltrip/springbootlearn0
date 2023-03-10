@@ -1,0 +1,29 @@
+spring:
+  redis:
+    host: localhost
+    port: 6379
+
+
+#jetcache 阿里出品的兼用本地和远程缓存的工具
+jetcache:
+  statIntervalMinutes: 15
+  areaInCacheName: false
+  local:
+    default:
+      type: linkedhashmap
+      keyConvertor: fastjson
+      limit: 1000
+  remote:
+    default:
+      type: redis
+      keyConvertor: fastjson
+      valueEncoder: java
+      valueDecoder: java
+      poolConfig:
+        minIdle: 5
+        maxIdle: 20
+        maxTotal: 50
+#      database: 16 # 连接工厂使用的数据库索引
+      host: localhost # 此处需要修改哈
+      port: 6379 # 此处需要修改哈
+#      password: xxx # 此处需要修改哈

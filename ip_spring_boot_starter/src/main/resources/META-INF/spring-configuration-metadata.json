@@ -1,0 +1,39 @@
+{
+  "groups": [
+    {
+      "name": "tools.ip",
+      "type": "cn.yj.ip_spring_boot_starter.properties.IpProperties",
+      "sourceType": "cn.yj.ip_spring_boot_starter.properties.IpProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "tools.ip.circle",
+      "type": "java.lang.Long",
+      "description": "循环时间",
+      "sourceType": "cn.yj.ip_spring_boot_starter.properties.IpProperties",
+      "defaultValue": 5
+    },
+    {
+      "name": "tools.ip.model",
+      "type": "java.lang.String",
+      "description": "显示方式 ， SIMPLE:简单 ； DETAIL:详情。",
+      "sourceType": "cn.yj.ip_spring_boot_starter.properties.IpProperties"
+    }
+  ],
+  "hints": [
+    {
+      "name": "tools.ip.model",
+      "values": [
+        {
+          "value":"simple",
+          "description": "简单模式"
+        },
+        {
+          "value":"detail",
+          "description": "详细模式"
+        }
+      ]
+    }
+  ]
+}

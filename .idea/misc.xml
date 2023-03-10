@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/base01/pom.xml" />
+        <option value="$PROJECT_DIR$/demo01/pom.xml" />
+        <option value="$PROJECT_DIR$/demo02/pom.xml" />
+        <option value="$PROJECT_DIR$/demo_SSMP/pom.xml" />
+        <option value="$PROJECT_DIR$/Mybatis01/pom.xml" />
+        <option value="$PROJECT_DIR$/mybatisplus01/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_mq/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_mail/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_cache/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_mongo/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_redis/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_jetcache/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_admin_client/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_admin_server/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_configuration/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_bean/pom.xml" />
+        <option value="$PROJECT_DIR$/ip_spring_boot_starter/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+</project>

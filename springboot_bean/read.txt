@@ -1,0 +1,191 @@
+bean的声明方式
+1.基于xml的方式来实现
+    在applicationContext.xml中声明如下
+    <?xml version="1.0" encoding="UTF-8"?>
+    <beans xmlns="http://www.springframework.org/schema/beans"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+        <bean id="cat" class="com.yj.springboot_bean.bean.Cat" />
+        <bean class="com.yj.springboot_bean.bean.Dog" />
+        <bean class="com.yj.springboot_bean.bean.Dog" />
+        <!--xml声明第三方的bean-->
+        <bean class="com.alibaba.druid.pool.DruidDataSource"/>
+        <bean class="com.alibaba.druid.pool.DruidDataSource"/>
+        <bean class="com.alibaba.druid.pool.DruidDataSource"/>
+    </beans>
+
+2.使用component-scan 扫描对应的路径来加载bean
+相应的第三方bean需要加对应的标签(Component ,Configuration ,Service...),然后在配置文件中,进行扫描就可以
+//@Component
+@Configuration
+public class Dbconfig {
+
+    @Bean
+    public DruidDataSource getDataSource(){
+        DruidDataSource dataSource = new DruidDataSource();
+        return dataSource;
+    }
+}
+
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:content="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+">
+
+    <!--指定加载bean的位置,component-->
+    <content:component-scan base-package="com.yj.springboot_bean.bean , com.yj.springboot_bean.config"/>
+</beans>
+
+3.使用spring提供的编码方式的类扫码方式加载
+    3.1
+        @ComponentScan({"com.yj.springboot_bean.bean , com.yj.springboot_bean.config"})
+        public class SpringConfig3 {
+            @Bean
+            public DruidDataSource getDataSource2(){
+                DruidDataSource dataSource = new DruidDataSource();
+                return dataSource;
+            }
+        }
+        然后用下面的代码就可以加载对应的bean
+         ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfig3.class);
+
+    3.2.使用FactoryBean 来创建bean,这里创建的bean并不是FactoryBean本身,而是对应的泛型对象.
+        这里在创建bean的过程中还能对bean进行初始化,让bean具有具体的属性.
+
+            public class DogFactoryBean implements FactoryBean<Dog> {
+                public Dog getObject() throws Exception {
+                    //这里可以先创建对象,然后设置相应的属性,
+                    //比如redis对象创建之后,可以设置相应的url和port以及用户名和密码,以及连接是否能够联通的检测
+                    //而,初级的bean的创建,只是调用了bean的构造方法来创建了一个bean,它里面的属性是没有的.
+                    return new Dog();
+                }
+                public Class<?> getObjectType() {
+                    return Dog.class;
+                }
+            }
+
+            @ComponentScan({"com.yj.springboot_bean.bean , com.yj.springboot_bean.config"})
+            public class SpringConfig3 {
+                @Bean
+                public DruidDataSource getDataSource2(){
+                    DruidDataSource dataSource = new DruidDataSource();
+                    return dataSource;
+                }
+                @Bean
+                public Dog dog1(){
+                    return new Dog();
+                }
+                @Bean
+                public DogFactoryBean dog2(){
+                    return new DogFactoryBean();
+                }
+            }
+
+        3.3.加载其他xml配置的bean.(系统迁移的时候用到,比如迁移老的项目)
+            @ImportResource("applicationContext.xml")
+            public class SpringConfig32 {
+            }
+
+        3.4.proxyBeanMethods属性,这里的代理如果是true,那么每次获取对象的时候,都是同一个
+                             如果是false,那么每次都会重新获取一个新的对象
+
+            @Configuration(proxyBeanMethods = false)
+            public class SpringConfig33 {
+                @Bean
+                public Dog dog1(){
+                    return new Dog();
+                }
+
+            }
+
+4.使用 @Import 来实现注入bean,并且,被导入的bean不需要声明为bean.目的就是为了解耦
+    @Import({Dog.class, Cat.class})
+    public class SpringConfig4 {
+    }
+
+    public class Dog {
+    }
+
+
+    public class App4 {
+        public static void main(String[] args) {
+            ApplicationContext app = new AnnotationConfigApplicationContext(SpringConfig4.class);
+            String[] names = app.getBeanDefinitionNames();
+            for (String name : names) {
+                System.out.println(name +"   " + app.getBean(name));
+            }
+        }
+    }
+
+5.在上下文初始化完成后,手动注册bean,使用 AnnotationConfigApplicationContext
+        public static void main(String[] args) {
+            AnnotationConfigApplicationContext app = new AnnotationConfigApplicationContext(SpringConfig5.class);
+            app.registerBean("tomcat" , Cat.class , 1);
+            app.registerBean("tomcat" , Cat.class ,2);
+
+            String[] names = app.getBeanDefinitionNames();
+            for (String name : names) {
+                System.out.println(name +"   " );
+            }
+            System.out.println(app.getBean("tomcat").toString());
+        }
+    }
+
+6.  implements ImportSelector 可以根据调用者的属性来自定义某些东西
+
+
+public class MyImportSelector implements ImportSelector {
+
+
+    @Override
+    public String[] selectImports(AnnotationMetadata importingClassMetadata) {
+
+        boolean flag = importingClassMetadata.hasAnnotation("org.springframework.context.annotation.Import");
+        if(flag){
+            return new String[]{"com.yj.springboot_bean.bean.Cat"};
+        }
+
+        return new String[]{"com.yj.springboot_bean.bean.Dog"};
+    }
+
+}
+
+
+7.implements ImportBeanDefinitionRegistrar,通过BeanDefinitionRegistry注册器来注册bean.
+
+    public class MyRegistrar implements ImportBeanDefinitionRegistrar {
+
+        @Override
+        public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+
+            BeanDefinition beanDefinition = BeanDefinitionBuilder.rootBeanDefinition(Dog.class).getBeanDefinition();
+            registry.registerBeanDefinition("big yellow" , beanDefinition);
+        }
+    }
+
+
+8. implements BeanDefinitionRegistryPostProcessor,使用后置bean注册器,之前同名的bean的注册在这里都会被覆盖
+
+
+public class MyPostProcessor implements BeanDefinitionRegistryPostProcessor {
+    @Override
+    public void postProcessBeanDefinitionRegistry(BeanDefinitionRegistry beanDefinitionRegistry) throws BeansException {
+        BeanDefinition beanDefinition = BeanDefinitionBuilder
+                .rootBeanDefinition(BookServiceImpl4.class)
+                .getBeanDefinition();
+        beanDefinitionRegistry.registerBeanDefinition("bookService" , beanDefinition);
+    }
+
+    @Override
+    public void postProcessBeanFactory(ConfigurableListableBeanFactory configurableListableBeanFactory) throws BeansException {
+
+    }
+}

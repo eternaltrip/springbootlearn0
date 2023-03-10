@@ -1,0 +1,19 @@
+server:
+  port: 80
+  servlet:
+    context-path: '/TMD'
+
+spring:
+  application:
+    name: 'RNMD'
+
+datasource:
+  url: localhost:8089
+  username: root
+  password: 123456
+  driver: com.mysql.jdbc.driver
+
+tools:
+  ip:
+    circle: 1
+    model: detail

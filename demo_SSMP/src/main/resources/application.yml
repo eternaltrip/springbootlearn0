@@ -1,0 +1,33 @@
+server:
+  port: 8089
+
+spring:
+  profiles:
+    active: pro
+    group:
+      "dev": devDB,devMP
+      "pro": proDB,proMP
+  boot:
+    admin:
+      client:
+        url: http://localhost:8080
+logging:
+  level:
+    root: info
+  pattern:
+  #    console: "%d %clr(%5p) --- [%16t] %clr(%-40.40c){cyan} : %m %n"
+  file:
+    name: server.log
+  logback:
+    rollingpolicy:
+    file-name-pattern: server.%d{yyyy-MM-dd}.%i.log
+    max-file-size: 10KB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always

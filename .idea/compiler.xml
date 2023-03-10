@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="demo01" />
+        <module name="springboot_admin_client" />
+        <module name="springboot_configuration" />
+        <module name="springboot_jetcache" />
+        <module name="springboot_redis" />
+        <module name="springboot_startup" />
+        <module name="springboot_mq" />
+        <module name="ip_spring_boot_starter" />
+        <module name="springboot_bean" />
+        <module name="Mybatis01" />
+        <module name="springboot_admin_server" />
+        <module name="base01" />
+        <module name="springboot_cache" />
+        <module name="springboot_mongo" />
+        <module name="demo_SSMP" />
+        <module name="mybatisplus01" />
+        <module name="springboot_mail" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="base01" target="1.8" />
+      <module name="deip-spring-boot-stater" target="19" />
+      <module name="demo01" target="1.8" />
+      <module name="demo_SSMP" target="1.8" />
+      <module name="ip_spring_boot_starter" target="1.8" />
+      <module name="Mybatis01" target="1.8" />
+      <module name="mybatisplus01" target="1.8" />
+      <module name="springboot_admin_client" target="1.8" />
+      <module name="springboot_admin_server" target="1.8" />
+      <module name="springboot_bean" target="1.6" />
+      <module name="springboot_cache" target="1.8" />
+      <module name="springboot_configuration" target="1.8" />
+      <module name="springboot_jetcache" target="1.8" />
+      <module name="springboot_mail" target="1.8" />
+      <module name="springboot_mongo" target="1.8" />
+      <module name="springboot_mq" target="1.8" />
+      <module name="springboot_redis" target="1.8" />
+      <module name="springboot_startup" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="Mybatis01" options="-parameters" />
+      <module name="base01" options="-parameters" />
+      <module name="deip-spring-boot-stater" options="-parameters" />
+      <module name="demo_SSMP" options="-parameters" />
+      <module name="ip_spring_boot_starter" options="-parameters" />
+      <module name="mybatisplus01" options="-parameters" />
+      <module name="springboot_admin_client" options="-parameters" />
+      <module name="springboot_admin_server" options="-parameters" />
+      <module name="springboot_cache" options="-parameters" />
+      <module name="springboot_configuration" options="-parameters" />
+      <module name="springboot_jetcache" options="-parameters" />
+      <module name="springboot_mail" options="-parameters" />
+      <module name="springboot_mongo" options="-parameters" />
+      <module name="springboot_mq" options="-parameters" />
+      <module name="springboot_redis" options="-parameters" />
+      <module name="springboot_startup" options="-parameters" />
+    </option>
+  </component>
+</project>

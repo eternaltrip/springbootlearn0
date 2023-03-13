@@ -13,6 +13,7 @@ jetcache:
       type: linkedhashmap
       keyConvertor: fastjson
       limit: 1000
+   # 下面是使用远程缓存，不用的时候可以直接注释或者不写
   remote:
     default:
       type: redis

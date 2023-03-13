@@ -11,15 +11,15 @@
         <option value="$PROJECT_DIR$/mybatisplus01/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_mq/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_mail/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot_cache/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_mongo/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_redis/pom.xml" />
-        <option value="$PROJECT_DIR$/springboot_jetcache/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_admin_client/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_admin_server/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_configuration/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_bean/pom.xml" />
         <option value="$PROJECT_DIR$/ip_spring_boot_starter/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_cache/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_jetcache/pom.xml" />
       </list>
     </option>
   </component>

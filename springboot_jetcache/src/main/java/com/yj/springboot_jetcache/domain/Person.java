@@ -13,7 +13,7 @@ public class Person implements Serializable {
     private Integer id;
     private String name;
     private String age;
-    private  String address;
+    private String address;
     private Date createTime;
     private String uuid;
 }

@@ -13,6 +13,8 @@
     <file url="file://$PROJECT_DIR$/ip_spring_boot_starter/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatisplus01/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/mybatisplus01/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_ScheduleTask/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/springboot_ScheduleTask/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_admin_client/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_admin_client/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_admin_server/src/main/java" charset="UTF-8" />
@@ -31,7 +33,5 @@
     <file url="file://$PROJECT_DIR$/springboot_mq/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_redis/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/springboot_redis/src/main/resources" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot_startup/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/springboot_startup/src/main/resources" charset="UTF-8" />
   </component>
 </project>

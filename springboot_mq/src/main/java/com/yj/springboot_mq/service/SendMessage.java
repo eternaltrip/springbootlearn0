@@ -1,11 +1,12 @@
 package com.yj.springboot_mq.service;
 
 
-import com.yj.springboot_mq.config.RabbitConfig;
+import com.yj.springboot_mq.config.DirectConfig;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.Random;
 
 @Service
 public class SendMessage {
@@ -15,17 +16,21 @@ public class SendMessage {
     private RabbitTemplate rabbitTemplate;
 
     public void sendMsg(String msg){
-        rabbitTemplate.convertAndSend(RabbitConfig.DIRECTEXCHANGE , RabbitConfig.ROUTINGKEY , msg);
-        System.out.println("发送消息: " + msg);
+        int num = new Random().nextInt(200);
+        if(num % 2 == 0){
+            rabbitTemplate.convertAndSend(DirectConfig.DIRECTEXCHANGE , DirectConfig.ROUTINGKEY , msg);
+            System.out.println("sendMsg发送消息=> direct_queue: " + msg);
+        }else{
+            rabbitTemplate.convertAndSend(DirectConfig.DIRECTEXCHANGE , DirectConfig.ROUTINGKEY2 , msg);
+            System.out.println("sendMsg发送消息=> direct_queue2: " + msg);
+        }
     }
 
 
-    public void sendTopMsg(String msg){
-
+    public void fanoutSend(String msg){
         // # 代表匹配任意次, * 代表匹配一次
-        rabbitTemplate.convertAndSend(RabbitConfig.TOP_EXCHANGE , "*.*.routingkey" , msg);
-        rabbitTemplate.convertAndSend(RabbitConfig.TOP_EXCHANGE , "#.routingkey" , msg);
-        System.out.println("发送消息: " + msg);
+        rabbitTemplate.convertAndSend("yj.fanout" , "" , msg);
+        System.out.println("sendTopMsg发送消息: " + msg);
     }
 
 }

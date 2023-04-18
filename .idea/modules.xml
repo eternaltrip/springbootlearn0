@@ -8,6 +8,7 @@
       <module fileurl="file://$PROJECT_DIR$/demo_SSMP/demo_SSMP.iml" filepath="$PROJECT_DIR$/demo_SSMP/demo_SSMP.iml" />
       <module fileurl="file://$PROJECT_DIR$/ip_spring_boot_starter/ip_spring_boot_starter.iml" filepath="$PROJECT_DIR$/ip_spring_boot_starter/ip_spring_boot_starter.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybatisplus01/mybatisplus01.iml" filepath="$PROJECT_DIR$/mybatisplus01/mybatisplus01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot_ScheduleTask/springboot_ScheduleTask.iml" filepath="$PROJECT_DIR$/springboot_ScheduleTask/springboot_ScheduleTask.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_admin_client/springboot_admin_client.iml" filepath="$PROJECT_DIR$/springboot_admin_client/springboot_admin_client.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_admin_server/springboot_admin_server.iml" filepath="$PROJECT_DIR$/springboot_admin_server/springboot_admin_server.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot_bean/springboot_bean.iml" filepath="$PROJECT_DIR$/springboot_bean/springboot_bean.iml" />

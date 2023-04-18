@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: pro
+    active: dev
     group:
       "dev": devDB,devMP
       "pro": proDB,proMP

@@ -20,6 +20,7 @@
         <option value="$PROJECT_DIR$/ip_spring_boot_starter/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_cache/pom.xml" />
         <option value="$PROJECT_DIR$/springboot_jetcache/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot_ScheduleTask/pom.xml" />
       </list>
     </option>
   </component>

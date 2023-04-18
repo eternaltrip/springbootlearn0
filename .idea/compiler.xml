@@ -18,6 +18,7 @@
         <module name="springboot_bean" />
         <module name="Mybatis01" />
         <module name="springboot_admin_server" />
+        <module name="springboot_ScheduleTask" />
         <module name="base01" />
         <module name="springboot_cache" />
         <module name="springboot_mongo" />
@@ -45,6 +46,7 @@
       <module name="springboot_mongo" target="1.8" />
       <module name="springboot_mq" target="1.8" />
       <module name="springboot_redis" target="1.8" />
+      <module name="springboot_ScheduleTask" target="1.8" />
       <module name="springboot_startup" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -56,6 +58,7 @@
       <module name="demo_SSMP" options="-parameters" />
       <module name="ip_spring_boot_starter" options="-parameters" />
       <module name="mybatisplus01" options="-parameters" />
+      <module name="springboot_ScheduleTask" options="-parameters" />
       <module name="springboot_admin_client" options="-parameters" />
       <module name="springboot_admin_server" options="-parameters" />
       <module name="springboot_cache" options="-parameters" />

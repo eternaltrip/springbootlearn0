@@ -5,3 +5,8 @@ hbase:
         property:
           clientPort: 2181
         quorum: 124.223.103.8
+
+mobilelevel:
+  tablename: mobile-ad-level
+  columnFamily: info
+  columns: uuid,msisdn,level,source,createtime,updatetime

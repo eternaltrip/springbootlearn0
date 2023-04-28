@@ -9,4 +9,4 @@ hbase:
 mobilelevel:
   tablename: mobile-ad-level
   columnFamily: info
-  columns: uuid,msisdn,level,source,createtime,updatetime
+  columns: uuid,msisdn,level,level_status,source,createtime,updatetime

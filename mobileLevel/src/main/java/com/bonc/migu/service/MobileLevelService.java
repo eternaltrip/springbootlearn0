@@ -38,7 +38,7 @@ public class MobileLevelService {
         if(rowData == null || StringUtils.isNotEmpty(rowData.get(columnFamily))){
             //不存在就新增
             String[] mobiles =  {mobile};
-            upToDB( mobiles, "user");
+            upToDB( mobiles, "user" ,"0");
             return "0";
         }
         return rowData.get("level");
@@ -51,7 +51,7 @@ public class MobileLevelService {
      * @param source
      * @return
      */
-    public boolean upToDB(String[] mobiles , String source){
+    public boolean upToDB(String[] mobiles , String source,String level_status){
 
         Boolean t = hbaseUtils.isExists(tableName);
         if(!t){
@@ -59,13 +59,26 @@ public class MobileLevelService {
         }
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         String now = sdf.format(new Date());
-        if(mobiles.length == 1){
-            hbaseUtils.putData(tableName, mobiles[0], columnFamily,
-                    Arrays.asList(columns.split(",")),  Arrays.asList(UUID.randomUUID().toString(), mobiles[0], "0" ,source,now ,now ) );
-        }else{
+        if(mobiles.length > 0){
             for (String mobile : mobiles) {
-                hbaseUtils.putData(tableName, mobile, columnFamily,
-                        Arrays.asList(columns.split(",")),  Arrays.asList(UUID.randomUUID().toString(), mobile, "0" ,source,now ,now ) );
+                Map<String, String> rowData = hbaseUtils.getData(tableName, mobile);
+               // uuid,msisdn,level,level_status,source,createtime,updatetime
+                String msisdn = rowData.get("msisdn");
+                String uuid = rowData.get("uuid");
+                String createtime = rowData.get("createtime");
+                if(rowData != null && StringUtils.isNotEmpty(msisdn)){
+                    //update
+                    if(level_status.equals("1")){
+                        hbaseUtils.putData(tableName, mobile, columnFamily,
+                                Arrays.asList(columns.split(",")),  Arrays.asList(uuid, mobile, "0" ,level_status,source,createtime ,now ) );
+                    }
+
+                }else{
+                    //add
+                    hbaseUtils.putData(tableName, mobile, columnFamily,
+                            Arrays.asList(columns.split(",")),  Arrays.asList(UUID.randomUUID().toString(), mobile, "0" ,level_status,source,now ,now ) );
+
+                }
             }
         }
         return true;

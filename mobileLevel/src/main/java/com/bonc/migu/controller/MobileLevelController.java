@@ -34,31 +34,35 @@ public class MobileLevelController {
 
 
     @PostMapping("/up")
-    public Object batchUP(@RequestParam(value = "mobiles",required = true) String mobiles){
+    public Object batchUP(@RequestParam(value = "mobiles",required = true) String mobiles , String level_status){
         String code = "0000";
         String msg = "SUCCESS";
-        if(StringUtils.isNotEmpty(mobiles)){
-            if(mobiles.indexOf("|") > 0){
-                String[] mobileArr = mobiles.split("|");
-                boolean status = true;
-                //判断是手机号码长度
-                for (int i = 0; i < mobileArr.length; i++) {
-                    if(mobileArr[i].trim().length() != 11){
-                        code = "0002";
-                        msg = "上报手机号码["+mobileArr[i]+"]不正确!";
-                        status = false;
-                        break;
-                    }
-                }
-                if(status){
-                    //执行写入库操作
-                    mobileLevelService.upToDB(mobileArr,"system");
+
+        if(StringUtils.isEmpty(mobiles)){
+            code = "0001";
+            msg = "上报手机号码不能为空!";
+        }else if (!"0".equals(level_status) && !"1".equals(level_status)){
+            code = "0001";
+            msg = "level_status参数有误，只能是0或者1";
+        }else {
+            String[] mobileArr = mobiles.split("|");
+            boolean status = true;
+            //判断是手机号码长度
+            for (int i = 0; i < mobileArr.length; i++) {
+                if(mobileArr[i].trim().length() != 11){
+                    code = "0002";
+                    msg = "上报手机号码["+mobileArr[i]+"]不正确!";
+                    status = false;
+                    break;
                 }
             }
-        }else{
-             code = "0001";
-             msg = "上报手机号码不能为空!";
+            if(status){
+                //执行写入库操作
+                mobileLevelService.upToDB(mobileArr,"system" , level_status);
+            }
         }
+
+
         Map<String,Object> retVal = new HashMap<>();
         retVal.put("code",code);
         retVal.put("message",msg);

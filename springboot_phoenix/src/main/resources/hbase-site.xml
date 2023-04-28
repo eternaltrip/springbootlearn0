@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="configuration.xsl"?>
+
+<configuration>
+<!--    <property>
+        <name>hbase.rootdir</name>
+        <value>hdfs://124.223.103.8:9820/hbase</value> &lt;!&ndash;对应hdfs-site.xml的dfs.nameservices属性值&ndash;&gt;
+    </property>
+
+    <property>
+        <name>hbase.cluster.distributed</name>
+        <value>true</value>
+    </property>
+
+    <property>
+        <name>hbase.zookeeper.quorum</name>
+        <value>124.223.103.8</value>
+    </property>
+    <property>
+        <name>hbase.zookeeper.property.clientPort</name>
+        <value>2181</value>
+    </property>-->
+
+    <!--  建立二级索引，将业务需要的数据联立建立索引，方便查询 -->
+<!--
+    <property>
+        <name>hbase.regionserver.wal.codec</name>
+        <value>org.apache.hadoop.hbase.regionserver.wal.IndexedWALEditCodec</value>
+    </property>
+-->
+
+    <!-- 如果使用了 hbase 中的自定义 namespace，不仅仅使用default -->
+    <!-- 那么在phoenix中与之对应的是schema的概念，但是默认并没有开启，需要在增加以下配置项 -->
+    <property>
+        <name>phoenix.schema.isNamespaceMappingEnabled</name>
+        <value>true</value>
+    </property>
+
+   <!-- <property>
+        <name>phoenix.schema.mapSystemTablesToNamespace</name>
+        <value>true</value>
+    </property>-->
+
+    <!-- 用户可以创建临时或永久的用户自定义函数。 -->
+    <!-- 这些用户自定义函数可以像内置的create、upsert、delete一样被调用 -->
+   <!-- <property>
+        <name>phoenix.functions.allowUserDefinedFunctions</name>
+        <value>true</value>
+        <description>enable UDF functions</description>
+    </property>
+-->
+
+
+
+<!--
+
+    <property>
+        <name>hbase.master</name>
+        <value>124.223.103.8:60000</value>
+        <description>单机版需要配主机名/IP和端口，HA方式只需要配端口</description>
+    </property>
+    <property>
+        <name>hbase.master.info.bindAddress</name>
+        <value>0.0.0.0</value>
+    </property>
+    <property>
+        <name>hbase.master.port</name>
+        <value>16000</value>
+    </property>
+    <property>
+        <name>hbase.master.info.port</name>
+        <value>16010</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.port</name>
+        <value>16020</value>
+    </property>
+    <property>
+        <name>hbase.regionserver.info.port</name>
+        <value>16030</value>
+    </property>
+-->
+
+
+
+
+
+
+
+</configuration>

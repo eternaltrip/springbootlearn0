@@ -24,7 +24,7 @@ public class ProjectExceptionAdvice {
         //通知运维
         //通知开发
         exception.printStackTrace();
-        log.error("异常发生" );
+        log.error("异常发生", exception );
         return ReturnObject.sys_error(exception.getMessage());
 
     }

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <excludeFromCompile>
+      <directory url="file://$PROJECT_DIR$/mobileLevel/src/main/resources/archetype-resources" includeSubdirectories="true" />
+    </excludeFromCompile>
     <annotationProcessing>
       <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="mobile-level" />
         <module name="springboot_admin_client" />
         <module name="demo01" />
         <module name="springboot_configuration" />
@@ -24,29 +28,15 @@
         <module name="springboot_mongo" />
         <module name="demo_SSMP" />
         <module name="mybatisplus01" />
+        <module name="mobileLevel" />
         <module name="springboot_mail" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="base01" target="1.8" />
       <module name="deip-spring-boot-stater" target="19" />
-      <module name="demo01" target="1.8" />
-      <module name="demo_SSMP" target="1.8" />
-      <module name="ip_spring_boot_starter" target="1.8" />
-      <module name="Mybatis01" target="1.8" />
-      <module name="mybatisplus01" target="1.8" />
-      <module name="springboot_admin_client" target="1.8" />
-      <module name="springboot_admin_server" target="1.8" />
-      <module name="springboot_bean" target="1.6" />
-      <module name="springboot_cache" target="1.8" />
-      <module name="springboot_configuration" target="1.8" />
-      <module name="springboot_jetcache" target="1.8" />
+      <module name="mobile_level" target="1.8" />
+      <module name="springboot_hbase" target="1.5" />
       <module name="springboot_jetcache (1)" target="1.8" />
-      <module name="springboot_mail" target="1.8" />
-      <module name="springboot_mongo" target="1.8" />
-      <module name="springboot_mq" target="1.8" />
-      <module name="springboot_redis" target="1.8" />
-      <module name="springboot_ScheduleTask" target="1.8" />
       <module name="springboot_startup" target="1.8" />
     </bytecodeTargetLevel>
   </component>
@@ -57,6 +47,9 @@
       <module name="deip-spring-boot-stater" options="-parameters" />
       <module name="demo_SSMP" options="-parameters" />
       <module name="ip_spring_boot_starter" options="-parameters" />
+      <module name="mobile-level" options="-parameters" />
+      <module name="mobileLevel" options="-parameters" />
+      <module name="mobile_level" options="-parameters" />
       <module name="mybatisplus01" options="-parameters" />
       <module name="springboot_ScheduleTask" options="-parameters" />
       <module name="springboot_admin_client" options="-parameters" />

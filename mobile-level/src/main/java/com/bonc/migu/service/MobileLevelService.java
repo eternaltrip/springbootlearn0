@@ -42,6 +42,7 @@ public class MobileLevelService {
     }
 
     public int save(List<MobileLevel> levels){
+        long begin =System.currentTimeMillis();
         log.info("批量上报开始，本次上报号码数量"+levels.size() );
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         int size = levels.size();
@@ -61,7 +62,8 @@ public class MobileLevelService {
                 //已经存在了，不做任何操作
             }
         }
-        log.info("批量上报结束");
+        long end =System.currentTimeMillis();
+        log.info("批量上报结束,耗时：" +( end - begin ) );
         return size;
     }
 

@@ -112,7 +112,7 @@ public class MobileLevelController {
         StringBuffer stringBuffer = new StringBuffer();
         Random  random = new Random();
 
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 500; i++) {
             int num = 100000000 + random.nextInt(899999999);
             stringBuffer.append(",13").append(num);
         }

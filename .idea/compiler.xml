@@ -17,6 +17,7 @@
         <module name="springboot_jetcache" />
         <module name="springboot_redis" />
         <module name="springboot_startup" />
+        <module name="springboot_phoenix" />
         <module name="springboot_mq" />
         <module name="ip_spring_boot_starter" />
         <module name="springboot_bean" />
@@ -61,6 +62,7 @@
       <module name="springboot_mail" options="-parameters" />
       <module name="springboot_mongo" options="-parameters" />
       <module name="springboot_mq" options="-parameters" />
+      <module name="springboot_phoenix" options="-parameters" />
       <module name="springboot_redis" options="-parameters" />
       <module name="springboot_startup" options="-parameters" />
     </option>

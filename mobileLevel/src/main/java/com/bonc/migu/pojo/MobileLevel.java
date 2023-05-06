@@ -30,6 +30,7 @@ public class MobileLevel {
      */
     private Integer status;
 
+
     private String createTime;
     private String updateTime;
 

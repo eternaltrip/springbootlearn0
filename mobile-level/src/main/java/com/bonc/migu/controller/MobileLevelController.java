@@ -52,7 +52,6 @@ public class MobileLevelController {
             level.setMsisdn(msisdn);
             level.setLevelStatus(0);
             level.setLevel(0);
-            level.setSource("USERQUERY");
             level.setStatus(0);
             level.setUuid("USERQUERY");
             mobileLevelService.save(level);
@@ -86,7 +85,6 @@ public class MobileLevelController {
                         level.setMsisdn(mobile);
                         level.setLevelStatus(StringUtils.isEmpty(levelstatus)? 0 : Integer.parseInt(levelstatus));
                         level.setLevel(0);
-                        level.setSource("SYSTEM");
                         level.setStatus(0);
                         level.setUuid(uuid);
                         levels.add(level);

@@ -17,6 +17,7 @@
             C1.UUID,
             C1.LEVEL,
             C1.STATUS,
+            C1.SOURCE,
             C1.CREATETIME,
             C1.UPDATETIME
             )
@@ -25,6 +26,7 @@
             #{uuid},
             #{level} ,
             #{status} ,
+            #{source} ,
             #{createTime} ,
             #{updateTime}
             )
@@ -38,3 +40,10 @@
         DELETE FROM TEST.MOBILELEVEL WHERE MSISDN=#{id}
     </delete>
 </mapper>
+
+
+
+
+
+
+

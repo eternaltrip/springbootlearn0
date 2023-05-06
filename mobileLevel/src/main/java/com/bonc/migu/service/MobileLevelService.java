@@ -1,91 +1,74 @@
 package com.bonc.migu.service;
 
-import com.bonc.migu.utils.HBaseUtils;
-import org.apache.commons.lang3.StringUtils;
+
+import com.bonc.migu.mapper.MobileLevelMapper;
+import com.bonc.migu.pojo.MobileLevel;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import javax.xml.crypto.Data;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.Map;
-import java.util.UUID;
+import java.util.List;
 
+@Slf4j
 @Service
 public class MobileLevelService {
+
+
     @Autowired
-    private HBaseUtils hbaseUtils;
-
-    @Value("${mobilelevel.tablename}")
-    private String tableName;
-    @Value("${mobilelevel.columnFamily}")
-    private String columnFamily;
-
-    @Value("${mobilelevel.columns}")
-    private String columns;
+    private MobileLevelMapper levelMapper;
 
 
 
-    /**
-     * 上报手机号码接口
-     * @param mobile
-     * @return
-     */
-    public String queryLevel(String mobile ){
-        Map<String, String> rowData = hbaseUtils.getData(tableName, mobile);
-        if(rowData == null || StringUtils.isNotEmpty(rowData.get(columnFamily))){
-            //不存在就新增
-            String[] mobiles =  {mobile};
-            upToDB( mobiles, "user" ,"0");
-            return "0";
-        }
-        return rowData.get("level");
+    public int count(){
+        return levelMapper.count();
+
+    }
+    public List<MobileLevel> queryAll(){
+        return levelMapper.queryAll();
+
     }
 
+    public MobileLevel queryById(String id){
+        return levelMapper.queryById(id);
+    }
 
-    /**
-     * 上报手机号码接口
-     * @param mobiles
-     * @param source
-     * @return
-     */
-    public boolean upToDB(String[] mobiles , String source,String level_status){
+    public int save(MobileLevel level){
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //如果新上报的号码需要强制刷新等级
+        level.setCreateTime(sdf.format(new Date()));
+        return levelMapper.save(level);
+    }
 
-        Boolean t = hbaseUtils.isExists(tableName);
-        if(!t){
-            hbaseUtils.createTable(tableName, Arrays.asList(columnFamily));
-        }
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        String now = sdf.format(new Date());
-        if(mobiles.length > 0){
-            for (String mobile : mobiles) {
-                Map<String, String> rowData = hbaseUtils.getData(tableName, mobile);
-               // uuid,msisdn,level,level_status,source,createtime,updatetime
-                String msisdn = rowData.get("msisdn");
-                String uuid = rowData.get("uuid");
-                String createtime = rowData.get("createtime");
-                if(rowData != null && StringUtils.isNotEmpty(msisdn)){
-                    //update
-                    if(level_status.equals("1")){
-                        hbaseUtils.putData(tableName, mobile, columnFamily,
-                                Arrays.asList(columns.split(",")),  Arrays.asList(uuid, mobile, "0" ,level_status,source,createtime ,now ) );
-                    }
-
-                }else{
-                    //add
-                    hbaseUtils.putData(tableName, mobile, columnFamily,
-                            Arrays.asList(columns.split(",")),  Arrays.asList(UUID.randomUUID().toString(), mobile, "0" ,level_status,source,now ,now ) );
-
-                }
+    public int save(List<MobileLevel> levels){
+        long begin =System.currentTimeMillis();
+        log.info("批量上报开始，本次上报号码数量"+levels.size() );
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        int size = levels.size();
+        for (MobileLevel level_new : levels) {
+            MobileLevel old = levelMapper.queryById(level_new.getMsisdn());
+            if(old == null){
+                //UPSERT
+                level_new.setCreateTime(sdf.format(new Date()));
+                levelMapper.save(level_new);
+            }else if(level_new.getLevelStatus() == 1){
+                //如果新上报的号码需要强制刷新等级
+                level_new.setUpdateTime(sdf.format(new Date()));
+                level_new.setCreateTime(old.getCreateTime());
+                levelMapper.save(level_new);
+            }else{
+                size --;
+                //已经存在了，不做任何操作
             }
         }
-        return true;
+        long end =System.currentTimeMillis();
+        log.info("批量上报结束,耗时：" +( end - begin ) );
+        return size;
     }
 
-
-
-
+    public int deleteById(String id){
+        return levelMapper.deleteById(id);
+    }
 
 }

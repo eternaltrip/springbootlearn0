@@ -4,46 +4,29 @@
 
 <mapper namespace="com.bonc.migu.mapper.MobileLevelMapper">
     <select id="count" resultType="int">
-        SELECT count(MSISDN) FROM TEST.MOBILELEVEL
+        SELECT count(MSISDN) FROM "migu_music_fensheng"."dapp_vrbt_mobile_user_level_resource_info"
     </select>
 
     <select id="queryAll" resultType="com.bonc.migu.pojo.MobileLevel">
-        SELECT * FROM TEST.MOBILELEVEL
+        SELECT * FROM "migu_music_fensheng"."dapp_vrbt_mobile_user_level_resource_info"
     </select>
 
     <insert id="save" parameterType="com.bonc.migu.pojo.MobileLevel">
-        UPSERT INTO  TEST.MOBILELEVEL(
+        UPSERT INTO  "migu_music_fensheng"."dapp_vrbt_mobile_user_level_resource_info"(
             MSISDN,
-            C1.UUID,
-            C1.LEVEL,
-            C1.STATUS,
-            C1.SOURCE,
-            C1.CREATETIME,
-            C1.UPDATETIME
+            C1.LEVEL
             )
             VALUES(
-            #{msisdn},
-            #{uuid},
-            #{level} ,
-            #{status} ,
-            #{source} ,
-            #{createTime} ,
-            #{updateTime}
-            )
+        #{msisdn},
+        #{level}
+        )
     </insert>
 
     <select id="queryById" resultType="com.bonc.migu.pojo.MobileLevel">
-        SELECT * FROM TEST.MOBILELEVEL WHERE MSISDN=#{id}
+        SELECT * FROM "migu_music_fensheng"."dapp_vrbt_mobile_user_level_resource_info" WHERE MSISDN=#{id}
     </select>
 
     <delete id="deleteById">
-        DELETE FROM TEST.MOBILELEVEL WHERE MSISDN=#{id}
+        DELETE FROM "migu_music_fensheng"."dapp_vrbt_mobile_user_level_resource_info" WHERE MSISDN=#{id}
     </delete>
 </mapper>
-
-
-
-
-
-
-

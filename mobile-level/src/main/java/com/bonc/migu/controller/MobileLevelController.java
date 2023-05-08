@@ -52,8 +52,6 @@ public class MobileLevelController {
             level.setMsisdn(msisdn);
             level.setLevelStatus(0);
             level.setLevel(0);
-            level.setStatus(0);
-            level.setUuid("USERQUERY");
             mobileLevelService.save(level);
         }
         Map<String,Object> retVal = new HashMap<>();
@@ -85,8 +83,6 @@ public class MobileLevelController {
                         level.setMsisdn(mobile);
                         level.setLevelStatus(StringUtils.isEmpty(levelstatus)? 0 : Integer.parseInt(levelstatus));
                         level.setLevel(0);
-                        level.setStatus(0);
-                        level.setUuid(uuid);
                         levels.add(level);
                     }
                 }

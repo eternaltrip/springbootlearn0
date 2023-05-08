@@ -35,9 +35,6 @@ public class MobileLevelService {
     }
 
     public int save(MobileLevel level){
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        //如果新上报的号码需要强制刷新等级
-        level.setCreateTime(sdf.format(new Date()));
         return levelMapper.save(level);
     }
 
@@ -50,12 +47,9 @@ public class MobileLevelService {
             MobileLevel old = levelMapper.queryById(level_new.getMsisdn());
             if(old == null){
                 //UPSERT
-                level_new.setCreateTime(sdf.format(new Date()));
                 levelMapper.save(level_new);
             }else if(level_new.getLevelStatus() == 1){
                 //如果新上报的号码需要强制刷新等级
-                level_new.setUpdateTime(sdf.format(new Date()));
-                level_new.setCreateTime(old.getCreateTime());
                 levelMapper.save(level_new);
             }else{
                 size --;

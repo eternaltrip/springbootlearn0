@@ -14,8 +14,6 @@ public class MobileLevel {
 
     //手机号码
     private String msisdn;
-    //任务id
-    private String uuid;
     //用户等级（0,1，2,3）
     private Integer level;
     /**
@@ -23,15 +21,6 @@ public class MobileLevel {
      * （0：否（默认），1：是））
      */
     private Integer levelStatus;
-    /**
-     * 是否已完成模型计算（
-     * 0：否（默认），1：是
-     * ）
-     */
-    private Integer status;
-
-    private String createTime;
-    private String updateTime;
 
 
 

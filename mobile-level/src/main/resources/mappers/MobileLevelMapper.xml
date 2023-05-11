@@ -14,7 +14,7 @@
     <insert id="save" parameterType="com.bonc.migu.pojo.MobileLevel">
         UPSERT INTO  "migu_music_fensheng"."dapp_vrbt_mobile_user_level_resource_info"(
             MSISDN,
-            C1.LEVEL
+            "cf".LEVEL
             )
             VALUES(
             #{msisdn},

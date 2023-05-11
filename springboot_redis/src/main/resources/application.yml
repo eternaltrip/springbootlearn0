@@ -1,4 +1,22 @@
 spring:
   redis:
-    host: localhost
-    port: 6379
+    password: yangjin15@#*A110
+    timeout: 20000ms
+    sentinel:
+      master: mymaster
+      nodes:
+        - 124.223.103.8:26379
+        - 124.223.103.8:26389
+        - 124.223.103.8:26399
+      password: yangjin15@#*A110
+    lettuce:
+      pool:
+        # 连接池最大连接数（使用负值表示没有限制）
+        max-active: 200
+        # 连接池中的最大空闲连接
+        max-idle: 20
+        # 连接池中的最小空闲连接
+        min-idle: 5
+        # 连接池最大阻塞等待时间（使用负值表示没有限制）
+        max-wait: -1ms
+

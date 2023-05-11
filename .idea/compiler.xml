@@ -14,10 +14,12 @@
         <module name="springboot_admin_client" />
         <module name="demo01" />
         <module name="springboot_configuration" />
+        <module name="music_tag" />
         <module name="springboot_jetcache" />
         <module name="springboot_redis" />
         <module name="springboot_startup" />
         <module name="springboot_phoenix" />
+        <module name="ScheduleTask" />
         <module name="springboot_mq" />
         <module name="ip_spring_boot_starter" />
         <module name="springboot_bean" />
@@ -44,6 +46,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="Mybatis01" options="-parameters" />
+      <module name="ScheduleTask" options="-parameters" />
       <module name="base01" options="-parameters" />
       <module name="deip-spring-boot-stater" options="-parameters" />
       <module name="demo_SSMP" options="-parameters" />
@@ -51,6 +54,7 @@
       <module name="mobile-level" options="-parameters" />
       <module name="mobileLevel" options="-parameters" />
       <module name="mobile_level" options="-parameters" />
+      <module name="music_tag" options="-parameters" />
       <module name="mybatisplus01" options="-parameters" />
       <module name="springboot_ScheduleTask" options="-parameters" />
       <module name="springboot_admin_client" options="-parameters" />
